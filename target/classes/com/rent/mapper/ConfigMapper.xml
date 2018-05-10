@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rent.dao.ConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.rent.entity.Config" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="House_id" property="houseId" jdbcType="VARCHAR" />
+    <result column="Bed" property="bed" jdbcType="INTEGER" />
+    <result column="Wash_clothes" property="washClothes" jdbcType="INTEGER" />
+    <result column="Air_conditioner" property="airConditioner" jdbcType="INTEGER" />
+    <result column="Balcony" property="balcony" jdbcType="INTEGER" />
+    <result column="Fridge" property="fridge" jdbcType="INTEGER" />
+    <result column="Wash_room" property="washRoom" jdbcType="INTEGER" />
+    <result column="Cooking" property="cooking" jdbcType="INTEGER" />
+    <result column="TV" property="tv" jdbcType="INTEGER" />
+    <result column="Sofa" property="sofa" jdbcType="INTEGER" />
+    <result column="Heating" property="heating" jdbcType="INTEGER" />
+    <result column="Wardrobe" property="wardrobe" jdbcType="INTEGER" />
+    <result column="Network" property="network" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, House_id, Bed, Wash_clothes, Air_conditioner, Balcony, Fridge, Wash_room, Cooking, 
+    TV, Sofa, Heating, Wardrobe, Network
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from config
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from config
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rent.entity.Config" >
+    insert into config (Id, House_id, Bed, 
+      Wash_clothes, Air_conditioner, Balcony, 
+      Fridge, Wash_room, Cooking, 
+      TV, Sofa, Heating, 
+      Wardrobe, Network)
+    values (#{id,jdbcType=VARCHAR}, #{houseId,jdbcType=VARCHAR}, #{bed,jdbcType=INTEGER}, 
+      #{washClothes,jdbcType=INTEGER}, #{airConditioner,jdbcType=INTEGER}, #{balcony,jdbcType=INTEGER}, 
+      #{fridge,jdbcType=INTEGER}, #{washRoom,jdbcType=INTEGER}, #{cooking,jdbcType=INTEGER}, 
+      #{tv,jdbcType=INTEGER}, #{sofa,jdbcType=INTEGER}, #{heating,jdbcType=INTEGER}, 
+      #{wardrobe,jdbcType=INTEGER}, #{network,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rent.entity.Config" >
+    insert into config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="houseId != null" >
+        House_id,
+      </if>
+      <if test="bed != null" >
+        Bed,
+      </if>
+      <if test="washClothes != null" >
+        Wash_clothes,
+      </if>
+      <if test="airConditioner != null" >
+        Air_conditioner,
+      </if>
+      <if test="balcony != null" >
+        Balcony,
+      </if>
+      <if test="fridge != null" >
+        Fridge,
+      </if>
+      <if test="washRoom != null" >
+        Wash_room,
+      </if>
+      <if test="cooking != null" >
+        Cooking,
+      </if>
+      <if test="tv != null" >
+        TV,
+      </if>
+      <if test="sofa != null" >
+        Sofa,
+      </if>
+      <if test="heating != null" >
+        Heating,
+      </if>
+      <if test="wardrobe != null" >
+        Wardrobe,
+      </if>
+      <if test="network != null" >
+        Network,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="houseId != null" >
+        #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="bed != null" >
+        #{bed,jdbcType=INTEGER},
+      </if>
+      <if test="washClothes != null" >
+        #{washClothes,jdbcType=INTEGER},
+      </if>
+      <if test="airConditioner != null" >
+        #{airConditioner,jdbcType=INTEGER},
+      </if>
+      <if test="balcony != null" >
+        #{balcony,jdbcType=INTEGER},
+      </if>
+      <if test="fridge != null" >
+        #{fridge,jdbcType=INTEGER},
+      </if>
+      <if test="washRoom != null" >
+        #{washRoom,jdbcType=INTEGER},
+      </if>
+      <if test="cooking != null" >
+        #{cooking,jdbcType=INTEGER},
+      </if>
+      <if test="tv != null" >
+        #{tv,jdbcType=INTEGER},
+      </if>
+      <if test="sofa != null" >
+        #{sofa,jdbcType=INTEGER},
+      </if>
+      <if test="heating != null" >
+        #{heating,jdbcType=INTEGER},
+      </if>
+      <if test="wardrobe != null" >
+        #{wardrobe,jdbcType=INTEGER},
+      </if>
+      <if test="network != null" >
+        #{network,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rent.entity.Config" >
+    update config
+    <set >
+      <if test="houseId != null" >
+        House_id = #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="bed != null" >
+        Bed = #{bed,jdbcType=INTEGER},
+      </if>
+      <if test="washClothes != null" >
+        Wash_clothes = #{washClothes,jdbcType=INTEGER},
+      </if>
+      <if test="airConditioner != null" >
+        Air_conditioner = #{airConditioner,jdbcType=INTEGER},
+      </if>
+      <if test="balcony != null" >
+        Balcony = #{balcony,jdbcType=INTEGER},
+      </if>
+      <if test="fridge != null" >
+        Fridge = #{fridge,jdbcType=INTEGER},
+      </if>
+      <if test="washRoom != null" >
+        Wash_room = #{washRoom,jdbcType=INTEGER},
+      </if>
+      <if test="cooking != null" >
+        Cooking = #{cooking,jdbcType=INTEGER},
+      </if>
+      <if test="tv != null" >
+        TV = #{tv,jdbcType=INTEGER},
+      </if>
+      <if test="sofa != null" >
+        Sofa = #{sofa,jdbcType=INTEGER},
+      </if>
+      <if test="heating != null" >
+        Heating = #{heating,jdbcType=INTEGER},
+      </if>
+      <if test="wardrobe != null" >
+        Wardrobe = #{wardrobe,jdbcType=INTEGER},
+      </if>
+      <if test="network != null" >
+        Network = #{network,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rent.entity.Config" >
+    update config
+    set House_id = #{houseId,jdbcType=VARCHAR},
+      Bed = #{bed,jdbcType=INTEGER},
+      Wash_clothes = #{washClothes,jdbcType=INTEGER},
+      Air_conditioner = #{airConditioner,jdbcType=INTEGER},
+      Balcony = #{balcony,jdbcType=INTEGER},
+      Fridge = #{fridge,jdbcType=INTEGER},
+      Wash_room = #{washRoom,jdbcType=INTEGER},
+      Cooking = #{cooking,jdbcType=INTEGER},
+      TV = #{tv,jdbcType=INTEGER},
+      Sofa = #{sofa,jdbcType=INTEGER},
+      Heating = #{heating,jdbcType=INTEGER},
+      Wardrobe = #{wardrobe,jdbcType=INTEGER},
+      Network = #{network,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

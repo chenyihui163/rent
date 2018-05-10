@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rent.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.rent.entity.User" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="User_name" property="userName" jdbcType="VARCHAR" />
+    <result column="Nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="VARCHAR" />
+    <result column="Wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="Indetify_card" property="indetifyCard" jdbcType="VARCHAR" />
+    <result column="Address" property="address" jdbcType="VARCHAR" />
+    <result column="Picture" property="picture" jdbcType="VARCHAR" />
+    <result column="Password" property="password" jdbcType="VARCHAR" />
+    <result column="Sex" property="sex" jdbcType="VARCHAR" />
+    <result column="State" property="state" jdbcType="INTEGER" />
+    <result column="Birth_date" property="birthDate" jdbcType="DATE" />
+    <result column="Create_date" property="createDate" jdbcType="DATE" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, User_name, Nick_name, Phone, Wechat, Indetify_card, Address, Picture, Password, 
+    Sex, State, Birth_date, Create_date, Email
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rent.entity.User" >
+    insert into user (Id, User_name, Nick_name, 
+      Phone, Wechat, Indetify_card, 
+      Address, Picture, Password, 
+      Sex, State, Birth_date, 
+      Create_date, Email)
+    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{indetifyCard,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{birthDate,jdbcType=DATE}, 
+      #{createDate,jdbcType=DATE}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rent.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="userName != null" >
+        User_name,
+      </if>
+      <if test="nickName != null" >
+        Nick_name,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="wechat != null" >
+        Wechat,
+      </if>
+      <if test="indetifyCard != null" >
+        Indetify_card,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="picture != null" >
+        Picture,
+      </if>
+      <if test="password != null" >
+        Password,
+      </if>
+      <if test="sex != null" >
+        Sex,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="birthDate != null" >
+        Birth_date,
+      </if>
+      <if test="createDate != null" >
+        Create_date,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="indetifyCard != null" >
+        #{indetifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rent.entity.User" >
+    update user
+    <set >
+      <if test="userName != null" >
+        User_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        Nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        Wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="indetifyCard != null" >
+        Indetify_card = #{indetifyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        Picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        Sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        Birth_date = #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="createDate != null" >
+        Create_date = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rent.entity.User" >
+    update user
+    set User_name = #{userName,jdbcType=VARCHAR},
+      Nick_name = #{nickName,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Wechat = #{wechat,jdbcType=VARCHAR},
+      Indetify_card = #{indetifyCard,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      Picture = #{picture,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Sex = #{sex,jdbcType=VARCHAR},
+      State = #{state,jdbcType=INTEGER},
+      Birth_date = #{birthDate,jdbcType=DATE},
+      Create_date = #{createDate,jdbcType=DATE},
+      Email = #{email,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

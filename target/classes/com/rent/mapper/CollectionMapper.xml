@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rent.dao.CollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.rent.entity.Collection" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="User_Id" property="userId" jdbcType="VARCHAR" />
+    <result column="House_Id" property="houseId" jdbcType="VARCHAR" />
+    <result column="State" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, User_Id, House_Id, State
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from collection
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from collection
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rent.entity.Collection" >
+    insert into collection (Id, User_Id, House_Id, 
+      State)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{houseId,jdbcType=VARCHAR}, 
+      #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rent.entity.Collection" >
+    insert into collection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="userId != null" >
+        User_Id,
+      </if>
+      <if test="houseId != null" >
+        House_Id,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseId != null" >
+        #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rent.entity.Collection" >
+    update collection
+    <set >
+      <if test="userId != null" >
+        User_Id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="houseId != null" >
+        House_Id = #{houseId,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rent.entity.Collection" >
+    update collection
+    set User_Id = #{userId,jdbcType=VARCHAR},
+      House_Id = #{houseId,jdbcType=VARCHAR},
+      State = #{state,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rent.dao.HouseMapper" >
+  <resultMap id="BaseResultMap" type="com.rent.entity.House" >
+    <id column="Id" property="id" jdbcType="VARCHAR" />
+    <result column="House_name" property="houseName" jdbcType="VARCHAR" />
+    <result column="Rent_type" property="rentType" jdbcType="INTEGER" />
+    <result column="Room_type" property="roomType" jdbcType="VARCHAR" />
+    <result column="House_level" property="houseLevel" jdbcType="VARCHAR" />
+    <result column="House_area" property="houseArea" jdbcType="VARCHAR" />
+    <result column="Direction" property="direction" jdbcType="VARCHAR" />
+    <result column="House_type" property="houseType" jdbcType="VARCHAR" />
+    <result column="House_address" property="houseAddress" jdbcType="VARCHAR" />
+    <result column="Province" property="province" jdbcType="VARCHAR" />
+    <result column="City" property="city" jdbcType="VARCHAR" />
+    <result column="County" property="county" jdbcType="VARCHAR" />
+    <result column="Price" property="price" jdbcType="INTEGER" />
+    <result column="Detail" property="detail" jdbcType="VARCHAR" />
+    <result column="user_Id" property="userId" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="DATE" />
+    <result column="Release_date" property="releaseDate" jdbcType="DATE" />
+    <result column="State" property="state" jdbcType="INTEGER" />
+    <result column="Collect_number" property="collectNumber" jdbcType="INTEGER" />
+    <result column="Config_id" property="configId" jdbcType="VARCHAR" />
+    <result column="House_picture" property="housePicture" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, House_name, Rent_type, Room_type, House_level, House_area, Direction, House_type, 
+    House_address, Province, City, County, Price, Detail, user_Id, Year, Release_date, 
+    State, Collect_number, Config_id, House_picture
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from house
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from house
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rent.entity.House" >
+    insert into house (Id, House_name, Rent_type, 
+      Room_type, House_level, House_area, 
+      Direction, House_type, House_address, 
+      Province, City, County, 
+      Price, Detail, user_Id, 
+      Year, Release_date, State, 
+      Collect_number, Config_id, House_picture
+      )
+    values (#{id,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, #{rentType,jdbcType=INTEGER}, 
+      #{roomType,jdbcType=VARCHAR}, #{houseLevel,jdbcType=VARCHAR}, #{houseArea,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{houseType,jdbcType=VARCHAR}, #{houseAddress,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{year,jdbcType=DATE}, #{releaseDate,jdbcType=DATE}, #{state,jdbcType=INTEGER}, 
+      #{collectNumber,jdbcType=INTEGER}, #{configId,jdbcType=VARCHAR}, #{housePicture,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rent.entity.House" >
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="houseName != null" >
+        House_name,
+      </if>
+      <if test="rentType != null" >
+        Rent_type,
+      </if>
+      <if test="roomType != null" >
+        Room_type,
+      </if>
+      <if test="houseLevel != null" >
+        House_level,
+      </if>
+      <if test="houseArea != null" >
+        House_area,
+      </if>
+      <if test="direction != null" >
+        Direction,
+      </if>
+      <if test="houseType != null" >
+        House_type,
+      </if>
+      <if test="houseAddress != null" >
+        House_address,
+      </if>
+      <if test="province != null" >
+        Province,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="county != null" >
+        County,
+      </if>
+      <if test="price != null" >
+        Price,
+      </if>
+      <if test="detail != null" >
+        Detail,
+      </if>
+      <if test="userId != null" >
+        user_Id,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="releaseDate != null" >
+        Release_date,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="collectNumber != null" >
+        Collect_number,
+      </if>
+      <if test="configId != null" >
+        Config_id,
+      </if>
+      <if test="housePicture != null" >
+        House_picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="houseName != null" >
+        #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null" >
+        #{rentType,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        #{roomType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseLevel != null" >
+        #{houseLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseArea != null" >
+        #{houseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        #{houseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=DATE},
+      </if>
+      <if test="releaseDate != null" >
+        #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="collectNumber != null" >
+        #{collectNumber,jdbcType=INTEGER},
+      </if>
+      <if test="configId != null" >
+        #{configId,jdbcType=VARCHAR},
+      </if>
+      <if test="housePicture != null" >
+        #{housePicture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rent.entity.House" >
+    update house
+    <set >
+      <if test="houseName != null" >
+        House_name = #{houseName,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null" >
+        Rent_type = #{rentType,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        Room_type = #{roomType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseLevel != null" >
+        House_level = #{houseLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="houseArea != null" >
+        House_area = #{houseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        Direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null" >
+        House_type = #{houseType,jdbcType=VARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        House_address = #{houseAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        Province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        City = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        County = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        Price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null" >
+        Detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_Id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=DATE},
+      </if>
+      <if test="releaseDate != null" >
+        Release_date = #{releaseDate,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="collectNumber != null" >
+        Collect_number = #{collectNumber,jdbcType=INTEGER},
+      </if>
+      <if test="configId != null" >
+        Config_id = #{configId,jdbcType=VARCHAR},
+      </if>
+      <if test="housePicture != null" >
+        House_picture = #{housePicture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rent.entity.House" >
+    update house
+    set House_name = #{houseName,jdbcType=VARCHAR},
+      Rent_type = #{rentType,jdbcType=INTEGER},
+      Room_type = #{roomType,jdbcType=VARCHAR},
+      House_level = #{houseLevel,jdbcType=VARCHAR},
+      House_area = #{houseArea,jdbcType=VARCHAR},
+      Direction = #{direction,jdbcType=VARCHAR},
+      House_type = #{houseType,jdbcType=VARCHAR},
+      House_address = #{houseAddress,jdbcType=VARCHAR},
+      Province = #{province,jdbcType=VARCHAR},
+      City = #{city,jdbcType=VARCHAR},
+      County = #{county,jdbcType=VARCHAR},
+      Price = #{price,jdbcType=INTEGER},
+      Detail = #{detail,jdbcType=VARCHAR},
+      user_Id = #{userId,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=DATE},
+      Release_date = #{releaseDate,jdbcType=DATE},
+      State = #{state,jdbcType=INTEGER},
+      Collect_number = #{collectNumber,jdbcType=INTEGER},
+      Config_id = #{configId,jdbcType=VARCHAR},
+      House_picture = #{housePicture,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
